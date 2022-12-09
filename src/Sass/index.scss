@@ -1,0 +1,312 @@
+//region RESET
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a:visited {
+	color: initial;
+}
+
+// endregion     RESET
+//region      VARIABLES
+$minVW: 1440px;
+$minVH: 1024px;
+$mainFont: Roboto, sans-serif;
+$iconSize: clamp(48px, 4.44vw, 64px);
+
+//region Font-props
+
+/*
+	clamp(value * ratio, clamp%, max)
+	    - ratio = 1024/1440 -> 0.7
+	    - clamp% = value / 1440
+	    - max = value
+*/
+
+$h1: clamp(16px, 1.67vw, 24px); // main title h1
+$h2: clamp(32px, 3.33vw, 48px); // graph title
+$h3: clamp(10px, 1.04vw, 15px); // graph title
+$regular-text: clamp(12px, 1.25vw, 18px); // regular txt
+$stat-score-number: clamp(18px, 1.81vw, 26px); // overview main stat number
+$stat-score-label: clamp(11px, 1.11vw, 16px); // overview main stat label txt
+$navLink: clamp(18px, 1.6vw, 24px); // nav
+$stat-food-number: clamp(14px, 1.39vw, 20px); // aside stat number
+$stat-food-label: clamp(10px, 0.97vw, 14px); // small label stat txt
+
+$txt-alt: clamp(8px, 0.83vw, 12px); // aside txt & graph txt precision
+
+$txt-detail: clamp(6px, 0.78vw, 8px); // graph detail
+$txt-detail-smaller: clamp(6px, 0.78vw, 7px); // graph detail
+//endregion
+
+//region Colors
+$primary: rgb(2, 2, 3);
+$primary-alt: rgb(40, 45, 48);
+$secondary: rgb(255 255 255);
+$accent-red: rgb(255, 0, 0);
+$accent-red-darker: rgb(230, 0, 0); // for graph bars
+$accent-blue: rgb(74, 184, 255);
+$accent-blue: rgb(253, 204, 12);
+$accent-blue: rgb(253, 81, 129);
+//endregion
+
+$headerH: 92px;
+$sideBarW: 116px;
+$margin-block-main: 64px 88px;
+$margin-inline-main: 88px;
+
+@mixin LeftBorder {
+	padding-inline: 28px;
+}
+
+//endregion      VARIABLES
+//region Global
+body {
+	font-family: $mainFont;
+	font-size: $regular-text;
+	font-weight: 400;
+}
+
+h1 {
+	font-size: $h1;
+}
+
+h2 {
+	font-size: $h2;
+
+	span {
+		color: $accent-red;
+	}
+}
+
+h3 {
+	font-size: $h3;
+}
+
+//endregion
+
+//region Header-Component
+.header {
+	display: grid;
+	overflow: hidden;
+	@include LeftBorder;
+	align-items: center;
+	height: $headerH;
+	color: $secondary;
+	background: $primary;
+	grid-auto-flow: column;
+	padding-block: 18px 12px;
+	gap: 10vw;
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		flex-flow: row nowrap;
+		gap: 12px;
+
+		svg {
+			width: 58px;
+			height: 58px;
+		}
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		flex-flow: row nowrap;
+		gap: 10vw;
+
+		a {
+			font-size: $navLink;
+			text-decoration: none;
+			color: $secondary;
+		}
+	}
+}
+
+//endregion
+
+//region Main
+.main {
+	display: flex;
+	flex-flow: nowrap;
+	flex-direction: row;
+	width: 100%;
+	height: calc(100vh - $headerH);
+}
+
+//region SideBar
+.sidebar {
+	@include LeftBorder;
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-flow: column nowrap;
+	width: $sideBarW;
+	height: 100%;
+	padding-top: clamp(48px, 17.6vh, 256px);
+	color: $secondary;
+	background: $primary;
+	gap: clamp(24px, 17.2vh, 248px);
+
+	&__nav {
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: clamp(8px, 1.3vh, 20px);
+		}
+	}
+
+	&__aside-txt {
+		font-size: $txt-alt;
+		width: max-content;
+		rotate: -90deg;
+	}
+}
+
+//endregion
+
+//region Container
+.container {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	margin: $margin-block-main $margin-inline-main;
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: clamp(52px, 5.35vw, 77px);
+
+		gap: clamp(12px, 2.85vw, 42px);
+
+		p {
+			font-size: $regular-text;
+		}
+	}
+
+	&__main {
+		display: grid;
+		$boxW: clamp(180px, 17.92vw, 258px);
+		max-width: 1125px;
+		grid-template-columns: 1fr $boxW;
+		grid-column-gap: clamp(22px, 2.22vw, 32px);
+
+		&__graphs {
+			display: grid;
+			grid-template-areas: "a a a" "b c d";
+			grid-gap: clamp(20px, 2.08vw, 30px);
+			grid-template-rows: clamp(224px, 22.22vh, 320px);
+			grid-template-columns: repeat(3, $boxW);
+
+			&__graph {
+				overflow: hidden;
+				border-radius: 5px;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+					object-position: center;
+				}
+
+				&--bars {
+					grid-area: a;
+					//width: clamp(584px, 58vw, 835px);
+					//height: clamp(224px, 22.22vh, 320px);
+				}
+
+				&--evolution,
+				&--skills,
+				&--score {
+					//width: $boxW;
+					//height: clamp(184px, 18.26vw, 263px);
+				}
+
+				&--evolution {
+					grid-area: b;
+				}
+
+				&--skills {
+					grid-area: c;
+				}
+
+				&--score {
+					grid-area: d;
+				}
+			}
+		}
+
+		&__aside {
+			display: grid;
+			align-items: stretch;
+			//grid-template-rows: repeat(4, clamp(88px, 8.61vh, 124px));
+			height: 100%;
+			//justify-content: space-between;
+			grid-row-gap: clamp(28px, 2.78vw, 40px);
+
+			&__item {
+				display: grid;
+				align-items: center;
+				padding: clamp(22px, 2.22vw, 32px);
+				border-radius: 5px;
+				background-color: rgb(251, 251, 251);
+				justify-items: self-start;
+				grid-column: $iconSize 1fr;
+				grid-template-areas:
+					"svg value"
+					"svg label";
+				grid-column-gap: clamp(18px, 1.6vw, 24px);
+
+				svg {
+					align-self: stretch;
+					width: $iconSize;
+					height: $iconSize;
+					grid-area: svg;
+					justify-self: stretch;
+				}
+
+				.value {
+					font-size: $stat-food-number;
+					grid-area: value;
+				}
+
+				.label {
+					font-size: $stat-food-label;
+					color: rgb(116, 121, 140);
+					grid-area: label;
+				}
+			}
+		}
+	}
+}
+
+//endregion
+
+.svg {
+	&__food {
+		&__fat {
+			#background {
+				fill-opacity: 0.1;
+				fill: #fd5181;
+			}
+
+			path {
+				fill: #fd5181;
+				clip-rule: evenodd;
+				fill-rule: evenodd;
+			}
+		}
+	}
+}
+
+#mask0_66308_128 {
+	mask-type: alpha;
+}
+
+//endregion

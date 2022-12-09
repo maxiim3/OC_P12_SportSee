@@ -31,7 +31,7 @@ export function SideBar() {
 					</li>
 				</ul>
 			</nav>
-			<p className="aside-txt">Copyright, SportSee 2020</p>
+			<p className="sidebar__aside-txt">Copyright, SportSee 2020</p>
 		</aside>
 	)
 }

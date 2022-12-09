@@ -2,7 +2,7 @@ import React from "react"
 
 const FoodCaloriesIcon = () => {
 	return (
-		<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g id="food-calories-icon">
 				<rect id="background" opacity="0.066125" width="60" height="60" rx="6" fill="#FF0000"/>
 				<g id="energy">

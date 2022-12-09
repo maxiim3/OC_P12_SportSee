@@ -1,0 +1,205 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a:visited {
+  color: initial;
+}
+
+/*
+	clamp(value * ratio, clamp%, max)
+	    - ratio = 1024/1440 -> 0.7
+	    - clamp% = value / 1440
+	    - max = value
+*/
+body {
+  font-family: Roboto, sans-serif;
+  font-size: clamp(12px, 1.25vw, 18px);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(16px, 1.67vw, 24px);
+}
+
+h2 {
+  font-size: clamp(32px, 3.33vw, 48px);
+}
+h2 span {
+  color: rgb(255, 0, 0);
+}
+
+h3 {
+  font-size: clamp(10px, 1.04vw, 15px);
+}
+
+.header {
+  display: grid;
+  overflow: hidden;
+  padding-inline: 28px;
+  align-items: center;
+  height: 92px;
+  color: rgb(255, 255, 255);
+  background: rgb(2, 2, 3);
+  grid-auto-flow: column;
+  padding-block: 18px 12px;
+  gap: 10vw;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 12px;
+}
+.header__logo svg {
+  width: 58px;
+  height: 58px;
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 10vw;
+}
+.header__nav a {
+  font-size: clamp(18px, 1.6vw, 24px);
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.main {
+  display: flex;
+  flex-flow: nowrap;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 92px);
+}
+
+.sidebar {
+  padding-inline: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  width: 116px;
+  height: 100%;
+  padding-top: clamp(48px, 17.6vh, 256px);
+  color: rgb(255, 255, 255);
+  background: rgb(2, 2, 3);
+  gap: clamp(24px, 17.2vh, 248px);
+}
+.sidebar__nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.3vh, 20px);
+}
+.sidebar__aside-txt {
+  font-size: clamp(8px, 0.83vw, 12px);
+  width: max-content;
+  rotate: -90deg;
+}
+
+.container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 64px 88px 88px;
+}
+.container__header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(52px, 5.35vw, 77px);
+  gap: clamp(12px, 2.85vw, 42px);
+}
+.container__header p {
+  font-size: clamp(12px, 1.25vw, 18px);
+}
+.container__main {
+  display: grid;
+  max-width: 1125px;
+  grid-template-columns: 1fr clamp(180px, 17.92vw, 258px);
+  grid-column-gap: clamp(22px, 2.22vw, 32px);
+}
+.container__main__graphs {
+  display: grid;
+  grid-template-areas: "a a a" "b c d";
+  grid-gap: clamp(20px, 2.08vw, 30px);
+  grid-template-rows: clamp(224px, 22.22vh, 320px);
+  grid-template-columns: repeat(3, clamp(180px, 17.92vw, 258px));
+}
+.container__main__graphs__graph {
+  overflow: hidden;
+  border-radius: 5px;
+}
+.container__main__graphs__graph img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.container__main__graphs__graph--bars {
+  grid-area: a;
+}
+.container__main__graphs__graph--evolution {
+  grid-area: b;
+}
+.container__main__graphs__graph--skills {
+  grid-area: c;
+}
+.container__main__graphs__graph--score {
+  grid-area: d;
+}
+.container__main__aside {
+  display: grid;
+  align-items: stretch;
+  height: 100%;
+  grid-row-gap: clamp(28px, 2.78vw, 40px);
+}
+.container__main__aside__item {
+  display: grid;
+  align-items: center;
+  padding: clamp(22px, 2.22vw, 32px);
+  border-radius: 5px;
+  background-color: rgb(251, 251, 251);
+  justify-items: self-start;
+  grid-column: clamp(48px, 4.44vw, 64px) 1fr;
+  grid-template-areas: "svg value" "svg label";
+  grid-column-gap: clamp(18px, 1.6vw, 24px);
+}
+.container__main__aside__item svg {
+  align-self: stretch;
+  width: clamp(48px, 4.44vw, 64px);
+  height: clamp(48px, 4.44vw, 64px);
+  grid-area: svg;
+  justify-self: stretch;
+}
+.container__main__aside__item .value {
+  font-size: clamp(14px, 1.39vw, 20px);
+  grid-area: value;
+}
+.container__main__aside__item .label {
+  font-size: clamp(10px, 0.97vw, 14px);
+  color: rgb(116, 121, 140);
+  grid-area: label;
+}
+
+.svg__food__fat #background {
+  fill-opacity: 0.1;
+  fill: #fd5181;
+}
+.svg__food__fat path {
+  fill: #fd5181;
+  clip-rule: evenodd;
+  fill-rule: evenodd;
+}
+
+#mask0_66308_128 {
+  mask-type: alpha;
+}
+
+/*# sourceMappingURL=index.css.map */
