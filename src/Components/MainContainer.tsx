@@ -2,13 +2,14 @@ import FoodCaloriesIcon from "./FoodCaloriesIcon"
 import FoodProteinIcon from "./FoodProteinIcon"
 import FoodCarbsIcon from "./FoodCarbsIcon"
 import FoodFatIcon from "./FoodFatIcon"
+import {userModel} from "../main"
 
-export function MainContainer() {
+export function MainContainer({user}: {user: userModel}) {
 	return (
 		<section className="container">
 			<header className={"container__header"}>
 				<h2>
-					Hello <span>Thomas</span>
+					Hello <span>{user.info.userInfos.firstName}</span>
 				</h2>
 				<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
 			</header>
@@ -42,22 +43,22 @@ export function MainContainer() {
 				<aside className="container__main__aside">
 						<article className={"container__main__aside__item"}>
 								<FoodCaloriesIcon />
-								<p className="value">1,930kCal</p>
+								<p className="value">{user.info.keyData.calorieCount}</p>
 								<p className="label">Calories</p>
 						</article>
 						<article className={"container__main__aside__item"}>
 								<FoodProteinIcon />
-								<p className="value">155g</p>
+								<p className="value">{user.info.keyData.proteinCount}</p>
 								<p className="label">Proteins</p>
 						</article>
 						<article className={"container__main__aside__item"}>
 								<FoodCarbsIcon />
-								<p className="value">290g</p>
+								<p className="value">{user.info.keyData.carbohydrateCount}</p>
 								<p className="label">Glucides</p>
 						</article>
 						<article className={"container__main__aside__item"}>
 								<FoodFatIcon />
-								<p className="value">50g</p>
+								<p className="value">{user.info.keyData.lipidCount}</p>
 								<p className="label">Lipides</p>
 						</article>
 				</aside>
