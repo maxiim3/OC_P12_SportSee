@@ -10,7 +10,7 @@ import {UserPerformanceModel} from "../Models/UserPerformanceModel"
 import {IUser} from "../Interface/IUser"
 
 
-class Store {
+export default class Api {
 	private readonly userId: number
 	private userInfo: IUserMainData | null
 	private userActivities: IUserActivity | null
@@ -74,18 +74,12 @@ class Store {
 
 	getUser() : IUser{
 		return {
-			info: store.getUserInfo()!,
-			activities: store.getUserActivities()!,
-			averageSessions: store.getUserAverageSessions()!,
-			performance: store.getUserPerformance()!,
+			info: this.getUserInfo()!,
+			activities: this.getUserActivities()!,
+			averageSessions: this.getUserAverageSessions()!,
+			performance: this.getUserPerformance()!,
 		}
 	}
 }
 
 
-const store = new Store(18)
-await store.createStore()
-
-const user: IUser = store.getUser()
-
-export {user}

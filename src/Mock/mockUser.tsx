@@ -1,6 +1,6 @@
-import {userModel} from "../main"
+import {IUser} from "../Interface/IUser"
 
-export const mockUser: userModel = {
+export const mockUser: IUser = {
 	info: {
 		id: 12,
 		userInfos: {

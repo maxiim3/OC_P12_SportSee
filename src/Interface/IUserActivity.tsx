@@ -6,4 +6,3 @@ export interface IUserActivity {
 		calories: number
 	}[]
 }
-

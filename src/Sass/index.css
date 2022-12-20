@@ -105,7 +105,6 @@ h3 {
 }
 
 .container {
-  overflow: hidden;
   width: 100%;
   height: 100%;
   margin: 64px 88px 88px;
@@ -119,31 +118,52 @@ h3 {
 .container__header p {
   font-size: clamp(12px, 1.25vw, 18px);
 }
-.container__main {
-  display: grid;
-  max-width: 1125px;
-  grid-template-columns: 1fr clamp(180px, 17.92vw, 258px);
-  grid-column-gap: clamp(22px, 2.22vw, 32px);
-}
-.container__main__graphs {
-  display: grid;
-  grid-template-areas: "a a a" "b c d";
-  grid-gap: clamp(20px, 2.08vw, 30px);
-  grid-template-rows: clamp(224px, 22.22vh, 320px);
-  grid-template-columns: repeat(3, clamp(180px, 17.92vw, 258px));
-}
 .container__main__graphs__graph {
-  overflow: hidden;
   border-radius: 5px;
-}
-.container__main__graphs__graph img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
 }
 .container__main__graphs__graph--bars {
   grid-area: a;
+  width: clamp(584px, 58vw, 835px);
+  height: clamp(224px, 22.22vh, 320px);
+  padding: 24px;
+  border: 1px green solid;
+}
+.container__main__graphs__graph .barChart {
+  border: 1px red solid;
+}
+.container__main__graphs__graph .barChart__legend {
+  display: flex;
+  float: right;
+  margin: 15px;
+  gap: 32px;
+}
+.container__main__graphs__graph .barChart__legend li {
+  font-size: clamp(10px, 0.97vw, 14px);
+  position: relative;
+  color: rgb(116, 121, 140);
+}
+.container__main__graphs__graph .barChart__legend li::before {
+  position: absolute;
+  top: 5px;
+  left: -18px;
+  width: clamp(6px, 0.55vw, 8px);
+  height: 8px;
+  content: "";
+  border-radius: 100%;
+  background: rgb(255, 0, 0);
+}
+.container__main__graphs__graph .barChart__legend li:first-of-type::before {
+  background: rgb(40, 45, 48);
+}
+.container__main__graphs__graph .barChart__bar--kg {
+  fill: rgb(2, 2, 3);
+}
+.container__main__graphs__graph .barChart__bar--cal {
+  fill: rgb(255, 0, 0);
+}
+.container__main__graphs__graph--evolution, .container__main__graphs__graph--skills, .container__main__graphs__graph--score {
+  width: clamp(180px, 17.92vw, 258px);
+  height: clamp(184px, 18.26vw, 263px);
 }
 .container__main__graphs__graph--evolution {
   grid-area: b;
