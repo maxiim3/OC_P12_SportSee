@@ -55,6 +55,8 @@ $accent-blue: rgb(253, 204, 12);
 $accent-blue: rgb(253, 81, 129);
 //endregion
 
+
+
 $headerH: 92px;
 $sideBarW: 116px;
 $margin-block-main: 64px 88px;
@@ -209,42 +211,53 @@ h3 {
 				border-radius: 5px;
 
 				&--bars {
-					grid-area: a;
-					width: clamp(584px, 58vw, 835px);
-					height: clamp(224px, 22.22vh, 320px);
-					padding: 24px;
+					width: 835px;
+					height: 320px;
 					border: 1px green solid;
+					grid-area: a;
 				}
 
 				.barChart {
+					width: 100% !important;
+					height: 100% !important;
 					border: 1px red solid;
-
 
 					&__legend {
 						display: flex;
-						float: right;
-						margin: 15px;
-						gap: 32px;
+						align-items: center;
+						justify-content: space-between;
 
-						li {
-							font-size: $stat-food-label;
-							position: relative;
-							color: rgb(116 121 140);
+						p {
+							font-size: $stat-score-label;
+							font-weight: 500;
+						}
 
-							&::before {
-								position: absolute;
-								top: 5px;
-								left: -18px;
-								width: clamp(6px, 0.55vw, 8px);
-								height: 8px;
-								content: "";
-								border-radius: 100%;
-								background: $accent-red;
-							}
+						ul {
+							display: flex;
+							float: right;
+							margin: 15px;
+							gap: 32px;
 
-							&:first-of-type {
+							li {
+								font-size: $stat-food-label;
+								position: relative;
+								color: rgb(116 121 140);
+
 								&::before {
-									background: $primary-alt;
+									position: absolute;
+									top: 5px;
+									left: -18px;
+									width: clamp(6px, 0.55vw, 8px);
+									height: 8px;
+									content: "";
+									border-radius: 100%;
+									background: $accent-red;
+								}
+
+								&:first-of-type {
+									&::before {
+										background: $primary-alt;
+									}
 								}
 							}
 						}

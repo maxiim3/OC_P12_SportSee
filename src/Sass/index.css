@@ -122,27 +122,37 @@ h3 {
   border-radius: 5px;
 }
 .container__main__graphs__graph--bars {
-  grid-area: a;
-  width: clamp(584px, 58vw, 835px);
-  height: clamp(224px, 22.22vh, 320px);
-  padding: 24px;
+  width: 835px;
+  height: 320px;
   border: 1px green solid;
+  grid-area: a;
 }
 .container__main__graphs__graph .barChart {
+  width: 100% !important;
+  height: 100% !important;
   border: 1px red solid;
 }
 .container__main__graphs__graph .barChart__legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container__main__graphs__graph .barChart__legend p {
+  font-size: clamp(11px, 1.11vw, 16px);
+  font-weight: 500;
+}
+.container__main__graphs__graph .barChart__legend ul {
   display: flex;
   float: right;
   margin: 15px;
   gap: 32px;
 }
-.container__main__graphs__graph .barChart__legend li {
+.container__main__graphs__graph .barChart__legend ul li {
   font-size: clamp(10px, 0.97vw, 14px);
   position: relative;
   color: rgb(116, 121, 140);
 }
-.container__main__graphs__graph .barChart__legend li::before {
+.container__main__graphs__graph .barChart__legend ul li::before {
   position: absolute;
   top: 5px;
   left: -18px;
@@ -152,7 +162,7 @@ h3 {
   border-radius: 100%;
   background: rgb(255, 0, 0);
 }
-.container__main__graphs__graph .barChart__legend li:first-of-type::before {
+.container__main__graphs__graph .barChart__legend ul li:first-of-type::before {
   background: rgb(40, 45, 48);
 }
 .container__main__graphs__graph .barChart__bar--kg {
