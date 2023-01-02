@@ -87,7 +87,7 @@ h3 {
   align-items: center;
   flex-flow: column nowrap;
   width: 116px;
-  height: 100%;
+  height: calc(100vh + 92px);
   padding-top: clamp(48px, 17.6vh, 256px);
   color: rgb(255, 255, 255);
   background: rgb(2, 2, 3);
@@ -118,41 +118,81 @@ h3 {
 .container__header p {
   font-size: clamp(12px, 1.25vw, 18px);
 }
+.container__main {
+  display: flex;
+  width: 1125px;
+  gap: 32px;
+}
+.container__main__graphs {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 32px;
+}
 .container__main__graphs__graph {
   border-radius: 5px;
 }
 .container__main__graphs__graph--bars {
   width: 835px;
   height: 320px;
-  border: 1px green solid;
   grid-area: a;
 }
-.container__main__graphs__graph .barChart {
+.container__main__graphs__graph--line, .container__main__graphs__graph--radar, .container__main__graphs__graph--radial {
+  width: clamp(180px, 17.92vw, 258px);
+  height: 263px;
+  align-self: end;
+}
+.container__main__graphs__graph--line {
+  grid-area: b;
+}
+.container__main__graphs__graph--radar {
+  grid-area: c;
+}
+.container__main__graphs__graph--radial {
+  grid-area: d;
+}
+.container__main .radialBarChart {
   width: 100% !important;
   height: 100% !important;
-  border: 1px red solid;
+  background-color: #fbfbfb;
 }
-.container__main__graphs__graph .barChart__legend {
+.container__main .barChart {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #fbfbfb;
+}
+.container__main .barChart__tooltip {
+  font-size: clamp(8px, 0.83vw, 12px);
+  font-weight: bold;
+  display: grid;
+  padding: 15px 15px;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 0;
+  background: rgb(230, 0, 0);
+  gap: 20px;
+}
+.container__main .barChart__legend {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container__main__graphs__graph .barChart__legend p {
+.container__main .barChart__legend p {
   font-size: clamp(11px, 1.11vw, 16px);
   font-weight: 500;
 }
-.container__main__graphs__graph .barChart__legend ul {
+.container__main .barChart__legend ul {
   display: flex;
   float: right;
   margin: 15px;
   gap: 32px;
 }
-.container__main__graphs__graph .barChart__legend ul li {
+.container__main .barChart__legend ul li {
   font-size: clamp(10px, 0.97vw, 14px);
   position: relative;
   color: rgb(116, 121, 140);
 }
-.container__main__graphs__graph .barChart__legend ul li::before {
+.container__main .barChart__legend ul li::before {
   position: absolute;
   top: 5px;
   left: -18px;
@@ -162,27 +202,50 @@ h3 {
   border-radius: 100%;
   background: rgb(255, 0, 0);
 }
-.container__main__graphs__graph .barChart__legend ul li:first-of-type::before {
+.container__main .barChart__legend ul li:first-of-type::before {
   background: rgb(40, 45, 48);
 }
-.container__main__graphs__graph .barChart__bar--kg {
+.container__main .barChart__bar--kg {
   fill: rgb(2, 2, 3);
 }
-.container__main__graphs__graph .barChart__bar--cal {
+.container__main .barChart__bar--cal {
   fill: rgb(255, 0, 0);
 }
-.container__main__graphs__graph--evolution, .container__main__graphs__graph--skills, .container__main__graphs__graph--score {
-  width: clamp(180px, 17.92vw, 258px);
-  height: clamp(184px, 18.26vw, 263px);
+.container__main .lineChart {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 5px;
+  background-color: rgb(255, 0, 0);
 }
-.container__main__graphs__graph--evolution {
-  grid-area: b;
+.container__main .lineChart__tooltip {
+  font-size: clamp(8px, 0.83vw, 12px);
+  font-weight: bold;
+  display: grid;
+  padding: 15px 15px;
+  text-align: center;
+  color: black;
+  border: none;
+  border-radius: 0;
+  background: white;
+  gap: 20px;
+  place-content: center;
 }
-.container__main__graphs__graph--skills {
-  grid-area: c;
+.container__main .lineChart__legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34px 29px;
+  color: rgba(255, 255, 255, 0.6);
 }
-.container__main__graphs__graph--score {
-  grid-area: d;
+.container__main .lineChart__legend p {
+  font-size: clamp(11px, 1.11vw, 16px);
+  font-weight: 500;
+}
+.container__main .radarChart {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 5px;
+  background-color: rgb(40, 45, 48);
 }
 .container__main__aside {
   display: grid;
