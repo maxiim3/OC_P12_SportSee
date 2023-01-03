@@ -1,5 +1,14 @@
 import React from "react"
 
+/**
+ * FoodCaloriesIcon is a functional component that displays an SVG icon of a calorie.
+ *
+ * @return {JSX.Element} Returns a JSX element representing the FoodCaloriesIcon.
+ * @example
+ * <FoodCaloriesIcon />
+ */
+
+
 const FoodCaloriesIcon = () => {
 	return (
 		<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">

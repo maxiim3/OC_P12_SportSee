@@ -9,10 +9,21 @@ import {
 	RadarChart,
 	ResponsiveContainer,
 } from "recharts"
-
+/**
+ * A functional component that renders a radar chart using the Recharts library.
+ * The chart displays performance data for various kinds of physical activities.
+ *
+ * @returns {JSX.Element} A radar chart component.
+ */
 export function RechartsRadarChart() {
 	const user = useContext(StoreContext)! as IUser
 
+	/**
+	 * Returns a string label for a given kind of physical activity.
+	 *
+	 * @param {number} kind - A number representing a kind of physical activity (1 for intensity, 2 for speed, etc.).
+	 * @returns {string} The label for the kind of physical activity as a string (e.g. "Intensité" for intensity, "Vitesse" for speed, etc.).
+	 */
 	function switchKind(kind: number) {
 		switch (kind) {
 			case 6:

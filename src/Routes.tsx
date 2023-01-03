@@ -1,58 +1,40 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom"
 import {Dashboard} from "./Pages/dashboard"
-import React, {useEffect} from "react"
+import React from "react"
 import {IUser} from "./Interface/IUser"
-import Api from "./Service/Api"
-import {mockUser} from "./Mock/mockUser"
+import PageNotFound from "./Pages/PageNotFound"
+import {useStore} from "./Hooks/UseStore"
 
-
-function useStore(userId: number) {
-	const store = new Api(userId)
-	store.createStore().then()
-	const user = store.getUser()
-	return {user}
-}
-
+/**
+ * # StoreContext
+ * StoreContext is a React context object used to store and access user data throughout the application.
+ *
+ * @type {React.Context} A context object containing user data.
+ */
 export const StoreContext = React.createContext({} as IUser)
 
-const USER_ID: 12 | 18 = 12
-
+/**
+ * # Router
+ * Router is a functional component that manages the client-side routing for the application. It utilizes `react-router-dom` to provide a variety of routing options, including rendering different components based on the current URL, and handling 404 errors.
+ *
+ * @return {JSX.Element} Returns a JSX element representing the client-side routing for the application.
+ * @example
+ * <Router />
+ */
 export function Router() {
-	useEffect(() => {
-		sessionStorage.clear()
-		localStorage.clear()
-		sessionStorage.setItem("userId", JSON.stringify(USER_ID))
-	}, [USER_ID])
-
-	const {user} = useStore(USER_ID)
+	const {user} = useStore(12) // 12 || 18
 
 	return (
 		<BrowserRouter>
-			<StoreContext.Provider value={mockUser}>
+			<StoreContext.Provider value={user}>
 				<Routes>
 					<Route
 						path={"/"}
 						element={<Dashboard />}
 					/>
-					{/*<Route
-					 path={`/user/${userID}`}
-					 element={JSON.stringify(user.info)}
-					 />
-					 <Route
-					 path={`/user/${userID}/activity`}
-					 element={JSON.stringify(user.activities)}
-					 />
-					 <Route
-					 path={`/user/${userID}/performance`}
-					 element={JSON.stringify(user.performance)}
-					 />
-					 <Route
-					 path={`/user/${userID}/average-sessions`}
-					 element={JSON.stringify(user.averageSessions)}
-					 />*/}
 					<Route
 						path={`/page-not-found`}
-						element={<h1>ERROR 404</h1>}
+						element={<PageNotFound />}
 					/>
 					<Route
 						path={`*`}

@@ -1,5 +1,13 @@
 import React from "react"
 
+/**
+ * FoodFatIcon is a React component that displays an SVG icon of a cheeseburger.
+ *
+ * @return {JSX.Element} Returns a JSX element representing the FoodFatIcon.
+ * @example
+ * <FoodFatIcon />
+ */
+
 const FoodFatIcon = () => {
 	return (
 		<svg

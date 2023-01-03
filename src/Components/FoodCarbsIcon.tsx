@@ -1,5 +1,13 @@
 import React from "react"
 
+/**
+ * FoodCarbsIcon is a React component that displays an SVG icon of an apple with the word "Carbs" written underneath.
+ *
+ * @return {JSX.Element} Returns a JSX element representing the FoodCarbsIcon.
+ * @example
+ * <FoodCarbsIcon />
+ */
+
 const FoodCarbsIcon = () => {
 	return (
 		<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">

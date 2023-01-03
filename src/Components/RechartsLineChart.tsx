@@ -3,8 +3,21 @@ import {StoreContext} from "../Routes"
 import {IUser} from "../Interface/IUser"
 import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "recharts"
 
+/**
+ * A functional component that renders a line chart using the Recharts library.
+ * The chart displays average session length data per day of the week.
+ *
+ * @returns {JSX.Element} A line chart component.
+ */
+
 export function RechartsLineChart() {
 	const user = useContext(StoreContext)! as IUser
+	/**
+	 * Returns the day of the week represented by the given number.
+	 *
+	 * @param {number} day - A number representing a day of the week (1 for Monday, 2 for Tuesday, etc.).
+	 * @returns {string} The day of the week as a string (e.g. "L" for Monday, "M" for Tuesday, etc.).
+	 */
 	const switchDay = (day: number) => {
 		switch (day) {
 			case 1:

@@ -1,5 +1,13 @@
 import React from "react"
 
+/**
+ * FoodProteinIcon is a functional component that displays an SVG icon of a chicken.
+ *
+ * @return {JSX.Element} Returns a JSX element representing the FoodProteinIcon.
+ * @example
+ * <FoodProteinIcon />
+ */
+
 const FoodProteinIcon = () => {
 	return (
 		<svg

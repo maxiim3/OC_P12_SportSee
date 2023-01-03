@@ -3,6 +3,12 @@ import React, {useContext, useMemo} from "react"
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
 import {StoreContext} from "../Routes"
 
+/**
+ * A functional component that renders a bar chart using the Recharts library.
+ * The chart displays user session data with the option to toggle between displaying weight and calorie data.
+ *
+ * @returns {JSX.Element} A bar chart component.
+ */
 export function RechartsBarChart() {
 	const user = useContext(StoreContext)! as IUser
 	const userSessions = useMemo(() => {

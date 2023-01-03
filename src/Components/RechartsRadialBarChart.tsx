@@ -3,6 +3,12 @@ import {StoreContext} from "../Routes"
 import {IUser} from "../Interface/IUser"
 import {Legend, PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer} from "recharts"
 
+/**
+ * A memoized variable that contains the user's score object.
+ * The object has a single property, "score", which is the user's score.
+ *
+ * @returns {Object} An object with a single property, "score", which is the user's score.
+ */
 export function RechartsRadialBarChart() {
 	const user = useContext(StoreContext)! as IUser
 	const scoreObjectif = useMemo(() => {
