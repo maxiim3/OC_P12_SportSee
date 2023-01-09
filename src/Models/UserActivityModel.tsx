@@ -1,5 +1,6 @@
 import {IUserActivity} from "../Interface/IUserActivity"
 
+// todo add documentation
 export class UserActivityModel implements IUserActivity {
 	userId: number
 	sessions: {day: string; kilogram: number; calories: number}[]

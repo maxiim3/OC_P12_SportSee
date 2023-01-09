@@ -7,7 +7,6 @@ import React from "react"
  * @example
  * <FoodProteinIcon />
  */
-
 const FoodProteinIcon = () => {
 	return (
 		<svg

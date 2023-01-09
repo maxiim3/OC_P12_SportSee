@@ -1,6 +1,7 @@
 import {IUserMainData} from "../Interface/IUserMainData"
 
-export class UserMainDataModel implements IUserMainData {
+// todo add documentation
+export class UserInfoModel implements IUserMainData {
 	id: number
 	keyData: {
 		calorieCount: number

@@ -1,8 +1,9 @@
 export interface IAverageSessions {
 	userId: number
-	sessions: {
-		day: number
-		sessionLength: number
-	}[]
+	sessions: ISessionData[]
 }
 
+export interface ISessionData {
+	day: number
+	sessionLength: number
+}

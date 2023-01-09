@@ -1,5 +1,6 @@
 import React from "react"
 
+//todo add documentation
 const WeightIcon = () => {
 	return (
 		<svg

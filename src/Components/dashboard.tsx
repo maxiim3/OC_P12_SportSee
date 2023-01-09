@@ -1,26 +1,24 @@
 import React, {useContext} from "react"
-import {IUser} from "../Interface/IUser"
-import {Navigate} from "react-router-dom"
-import {StoreContext} from "../Routes"
 import FoodCaloriesIcon from "./FoodCaloriesIcon"
 import FoodProteinIcon from "./FoodProteinIcon"
 import FoodCarbsIcon from "./FoodCarbsIcon"
 import FoodFatIcon from "./FoodFatIcon"
+import {UserContext} from "../Pages/PageLayout"
 import {RechartsBarChart} from "./RechartsBarChart"
 import {RechartsLineChart} from "./RechartsLineChart"
 import {RechartsRadarChart} from "./RechartsRadarChart"
 import {RechartsRadialBarChart} from "./RechartsRadialBarChart"
 
 /**
- * MainContainer is a functional component that displays information about the user
- * and several charts of their data.
+ * # Dashboard
+ * Dashboard is a functional component that renders the header, side bar, and main container of a dashboard layout.
  *
- * @return {JSX.Element} A JSX element representing the main container
+ * @return {JSX.Element} Returns a JSX element representing the dashboard layout.
+ * @example
+ * <Dashboard />
  */
-export function MainContainer() {
-	const user = useContext(StoreContext)! as IUser
-
-	if (!user) return <Navigate to={"/page-not-found"} />
+export function Dashboard() {
+	const user = useContext(UserContext)!
 
 	const {firstName} = user?.info.userInfos
 	const {calorieCount, proteinCount, carbohydrateCount, lipidCount} = user?.info.keyData
@@ -36,9 +34,9 @@ export function MainContainer() {
 			<main className={"container__main"}>
 				<section className="container__main__graphs">
 					<RechartsBarChart />
-					<RechartsLineChart />
-					<RechartsRadarChart />
-					<RechartsRadialBarChart />
+					 <RechartsLineChart />
+					 <RechartsRadarChart />
+					 <RechartsRadialBarChart />
 				</section>
 				<aside className="container__main__aside">
 					<article className={"container__main__aside__item"}>

@@ -213,9 +213,9 @@ h3 {
 				&--line,
 				&--radar,
 				&--radial {
+					align-self: end;
 					width: $boxW;
 					height: 263px;
-					align-self: end;
 				}
 
 				&--line {
@@ -233,10 +233,33 @@ h3 {
 		}
 
 		.radialBarChart {
+			position: relative;
 			width: 100% !important;
 			height: 100% !important;
 			background-color: #fbfbfb;
+
+			&__legend {
+				&--title {
+					position: absolute;
+					top: 30px;
+					left: 24px;
+					font-size: 15px;
+				}
+
+				&--label {
+					font-size: 16px;
+					font-weight: 600;
+					position: absolute;
+					top: 150px;
+					left: 80px;
+					color: #b2b1b1;
+					letter-spacing: 0.4px;
+					line-height: 145%;
+					width: 10ch;
+					text-align: center;
+				}
 			}
+		}
 
 		.barChart {
 			width: 100% !important;
@@ -254,7 +277,7 @@ h3 {
 				border-radius: 0;
 				background: $accent-red-darker;
 				gap: 20px;
-				}
+			}
 
 			&__legend {
 				display: flex;
@@ -264,7 +287,7 @@ h3 {
 				p {
 					font-size: $stat-score-label;
 					font-weight: 500;
-					}
+				}
 
 				ul {
 					display: flex;
@@ -286,27 +309,27 @@ h3 {
 							content: "";
 							border-radius: 100%;
 							background: $accent-red;
-							}
+						}
 
 						&:first-of-type {
 							&::before {
 								background: $primary-alt;
-								}
 							}
 						}
 					}
 				}
+			}
 
 			&__bar {
 				&--kg {
 					fill: $primary;
-					}
+				}
 
 				&--cal {
 					fill: $accent-red;
-					}
 				}
 			}
+		}
 
 		.lineChart {
 			width: 100% !important;
@@ -326,7 +349,7 @@ h3 {
 				background: white;
 				gap: 20px;
 				place-content: center;
-				}
+			}
 
 			&__legend {
 				display: flex;
@@ -338,16 +361,16 @@ h3 {
 				p {
 					font-size: $stat-score-label;
 					font-weight: 500;
-					}
 				}
 			}
+		}
 
 		.radarChart {
 			width: 100% !important;
 			height: 100% !important;
 			border-radius: 5px;
 			background-color: $primary-alt;
-			}
+		}
 
 		&__aside {
 			display: grid;

@@ -4,6 +4,7 @@ import {BikingIcon} from "./BikingIcon"
 import {WeightIcon} from "./WeightIcon"
 import React from "react"
 
+//todo add documentation
 export function SideBar() {
 	return (
 		<aside className={"sidebar"}>

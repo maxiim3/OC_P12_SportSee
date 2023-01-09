@@ -1,8 +1,10 @@
 export interface IUserActivity {
 	userId: number
-	sessions: {
-		day: string
-		kilogram: number
-		calories: number
-	}[]
+	sessions: ISession[]
+}
+
+export interface ISession {
+	day: string
+	kilogram: number
+	calories: number
 }

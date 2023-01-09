@@ -1,7 +1,6 @@
-import {IUser} from "../Interface/IUser"
 import React, {useContext, useMemo} from "react"
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
-import {StoreContext} from "../Routes"
+import {UserContext} from "../Pages/PageLayout"
 
 /**
  * A functional component that renders a bar chart using the Recharts library.
@@ -10,7 +9,8 @@ import {StoreContext} from "../Routes"
  * @returns {JSX.Element} A bar chart component.
  */
 export function RechartsBarChart() {
-	const user = useContext(StoreContext)! as IUser
+	const user = useContext(UserContext)!
+
 	const userSessions = useMemo(() => {
 		let sessionIteration = 0
 		let sessionsWithIteration: {

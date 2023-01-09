@@ -1,6 +1,4 @@
 import React, {useContext, useMemo} from "react"
-import {StoreContext} from "../Routes"
-import {IUser} from "../Interface/IUser"
 import {
 	PolarAngleAxis,
 	PolarGrid,
@@ -9,6 +7,7 @@ import {
 	RadarChart,
 	ResponsiveContainer,
 } from "recharts"
+import {UserContext} from "../Pages/PageLayout"
 /**
  * A functional component that renders a radar chart using the Recharts library.
  * The chart displays performance data for various kinds of physical activities.
@@ -16,8 +15,7 @@ import {
  * @returns {JSX.Element} A radar chart component.
  */
 export function RechartsRadarChart() {
-	const user = useContext(StoreContext)! as IUser
-
+	const user = useContext(UserContext)!
 	/**
 	 * Returns a string label for a given kind of physical activity.
 	 *

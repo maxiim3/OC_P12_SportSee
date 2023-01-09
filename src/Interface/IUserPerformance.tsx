@@ -1,6 +1,10 @@
 export interface IUserPerformance {
 	userId: number
-	kind: {}
-	data: {value: number; kind: number}[]
+	kind: {[key: string]: string}
+	data: IDataValue[]
 }
 
+export interface IDataValue {
+	value: number
+	kind: number
+}

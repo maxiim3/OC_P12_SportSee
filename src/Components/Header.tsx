@@ -1,6 +1,8 @@
 import {MainIcon} from "./Logo"
 import React from "react"
+import {NavRedirect} from "./NavRedirect"
 
+// todo add documentation
 export function Header() {
 	return (
 		<header className={"header"}>
@@ -10,16 +12,28 @@ export function Header() {
 			<nav>
 				<ul className={"header__nav"}>
 					<li>
-						<a href={"#"}>Accueil</a>
+						<NavRedirect
+							title={"Accueil"}
+							url={"/"}
+						/>
 					</li>
 					<li>
-						<a href={"#"}>Profil</a>
+						<NavRedirect
+							title={"Profil"}
+							url={"/profil"}
+						/>
 					</li>
 					<li>
-						<a href={"#"}>Réglage</a>
+						<NavRedirect
+							title={"Réglage"}
+							url={"/settings"}
+						/>
 					</li>
 					<li>
-						<a href={"#"}>Communauté</a>
+						<NavRedirect
+							title={"Communauté"}
+							url={"/community"}
+						/>
 					</li>
 				</ul>
 			</nav>

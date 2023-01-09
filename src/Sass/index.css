@@ -137,9 +137,9 @@ h3 {
   grid-area: a;
 }
 .container__main__graphs__graph--line, .container__main__graphs__graph--radar, .container__main__graphs__graph--radial {
+  align-self: end;
   width: clamp(180px, 17.92vw, 258px);
   height: 263px;
-  align-self: end;
 }
 .container__main__graphs__graph--line {
   grid-area: b;
@@ -151,9 +151,28 @@ h3 {
   grid-area: d;
 }
 .container__main .radialBarChart {
+  position: relative;
   width: 100% !important;
   height: 100% !important;
   background-color: #fbfbfb;
+}
+.container__main .radialBarChart__legend--title {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  font-size: 15px;
+}
+.container__main .radialBarChart__legend--label {
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  top: 150px;
+  left: 80px;
+  color: #b2b1b1;
+  letter-spacing: 0.4px;
+  line-height: 145%;
+  width: 10ch;
+  text-align: center;
 }
 .container__main .barChart {
   width: 100% !important;

@@ -1,18 +1,18 @@
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom"
-import {Dashboard} from "./Pages/dashboard"
+import {
+	createBrowserRouter,
+	createRoutesFromElements,
+	Navigate,
+	Route,
+	RouterProvider,
+} from "react-router-dom"
 import React from "react"
-import {IUser} from "./Interface/IUser"
+import {Dashboard} from "./Components/dashboard"
 import PageNotFound from "./Pages/PageNotFound"
+import {PageLayout} from "./Pages/PageLayout"
 import {useStore} from "./Hooks/UseStore"
+import {OtherPageLayout} from "./Pages/OtherPageLayout"
 
-/**
- * # StoreContext
- * StoreContext is a React context object used to store and access user data throughout the application.
- *
- * @type {React.Context} A context object containing user data.
- */
-export const StoreContext = React.createContext({} as IUser)
-
+// todo update documentation
 /**
  * # Router
  * Router is a functional component that manages the client-side routing for the application. It utilizes `react-router-dom` to provide a variety of routing options, including rendering different components based on the current URL, and handling 404 errors.
@@ -22,26 +22,51 @@ export const StoreContext = React.createContext({} as IUser)
  * <Router />
  */
 export function Router() {
-	const {user} = useStore(12) // 12 || 18
-
-	return (
-		<BrowserRouter>
-			<StoreContext.Provider value={user}>
-				<Routes>
-					<Route
-						path={"/"}
-						element={<Dashboard />}
-					/>
-					<Route
-						path={`/page-not-found`}
-						element={<PageNotFound />}
-					/>
-					<Route
-						path={`*`}
-						element={<Navigate to={"/page-not-found"} />}
-					/>
-				</Routes>
-			</StoreContext.Provider>
-		</BrowserRouter>
+	const router = createBrowserRouter(
+		createRoutesFromElements(
+			<Route
+				path={"/"}
+				element={<PageLayout />}
+				loader={useStore}
+				errorElement={<Navigate to={"/page-not-found"} />}>
+				<Route
+					path={"/"}
+					element={<Dashboard />}
+				/>
+				<Route
+					path={`/profil`}
+					element={
+						<OtherPageLayout
+							title={"Profil"}
+							label={"Paramètres de votre profil"}
+						/>
+					}
+				/>
+				<Route
+					path={`/settings`}
+					element={
+						<OtherPageLayout
+							title={"Paramètres"}
+							label={"Réglage de l'Application"}
+						/>
+					}
+				/>
+				<Route
+					path={`/community`}
+					element={
+						<OtherPageLayout
+							title={"Communauté"}
+							label={"Échangez avec la communauté SportSee"}
+						/>
+					}
+				/>
+				<Route
+					path={`/page-not-found`}
+					element={<PageNotFound />}
+				/>
+			</Route>
+		)
 	)
+
+	return <RouterProvider router={router} />
 }

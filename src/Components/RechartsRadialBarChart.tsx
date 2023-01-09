@@ -1,7 +1,6 @@
 import React, {useContext, useMemo} from "react"
-import {StoreContext} from "../Routes"
-import {IUser} from "../Interface/IUser"
 import {Legend, PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer} from "recharts"
+import {UserContext} from "../Pages/PageLayout"
 
 /**
  * A memoized variable that contains the user's score object.
@@ -10,10 +9,11 @@ import {Legend, PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer} 
  * @returns {Object} An object with a single property, "score", which is the user's score.
  */
 export function RechartsRadialBarChart() {
-	const user = useContext(StoreContext)! as IUser
+	const user = useContext(UserContext)!
 	const scoreObjectif = useMemo(() => {
 		return {score: user.info.todayScore || user.info.score}
 	}, [user])
+
 	return (
 		<article className="container__main__graphs__graph container__main__graphs__graph--radial">
 			<ResponsiveContainer className={"radialBarChart"}>
@@ -33,7 +33,7 @@ export function RechartsRadialBarChart() {
 						tick={false}
 					/>
 					<RadialBar
-						legendType={"wye"}
+						legendType={"line"}
 						label={{
 							fill: "#000000",
 							position: "center",
@@ -51,13 +51,18 @@ export function RechartsRadialBarChart() {
 						 fill={"#000000"}
 						 />*/}
 					</RadialBar>
-
+					// todo ajouter un bloc html pour le texte
 					<Legend
 						layout="vertical"
 						verticalAlign="top"
 						align="left"
 						aria-label={"Score"}
-						content={() => <span>Score</span>}
+						content={() => (
+							<div className={"radialBarChart__legend"}>
+								<p className={"radialBarChart__legend--title"}>Score</p>
+								<p className={"radialBarChart__legend--label"}>de votre objectif</p>
+							</div>
+						)}
 					/>
 				</RadialBarChart>
 			</ResponsiveContainer>

@@ -1,7 +1,6 @@
 import React, {useContext, useMemo} from "react"
-import {StoreContext} from "../Routes"
-import {IUser} from "../Interface/IUser"
 import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "recharts"
+import {UserContext} from "../Pages/PageLayout"
 
 /**
  * A functional component that renders a line chart using the Recharts library.
@@ -11,7 +10,7 @@ import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "rech
  */
 
 export function RechartsLineChart() {
-	const user = useContext(StoreContext)! as IUser
+	const user = useContext(UserContext)!
 	/**
 	 * Returns the day of the week represented by the given number.
 	 *
@@ -99,6 +98,7 @@ export function RechartsLineChart() {
 					/>
 					<Line
 						activeDot={props => {
+							//todo add point
 							return <></>
 						}}
 						dot={false}

@@ -1,5 +1,6 @@
 import {IUser} from "../Interface/IUser"
 
+// todo add documentation
 export const mockUser: IUser = {
 	info: {
 		id: 12,

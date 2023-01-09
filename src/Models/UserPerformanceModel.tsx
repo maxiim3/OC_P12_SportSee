@@ -1,5 +1,6 @@
 import {IUserPerformance} from "../Interface/IUserPerformance"
 
+// todo add documentation
 export class UserPerformanceModel implements IUserPerformance {
 	data: {value: number; kind: number}[]
 	kind: {}
