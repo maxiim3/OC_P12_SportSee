@@ -1,3 +1,42 @@
+#loader-container {
+	transition: all 1350ms ease-out;
+
+	&[data-is-visible="true"] {
+		font-size: 36px;
+		font-weight: 600;
+		z-index: 1;
+		display: grid;
+		width: 100%;
+		height: 100%;
+		transition: all 1350ms ease-out;
+		place-content: center;
+	}
+
+	&[data-is-visible="false"] {
+		position: absolute;
+		z-index: -1;
+		top: -200px;
+		left: -1200px;
+		visibility: hidden;
+		transition: all 1350ms ease-out;
+		opacity: 0;
+	}
+}
+
+#loader-container[data-is-visible="true"] + #root {
+	visibility: hidden;
+	opacity: 0;
+}
+
+#loader-container[data-is-visible="false"] + #root {
+	visibility: visible;
+	opacity: 1;
+}
+
+#root {
+	transition: all 1350ms ease-in;
+}
+
 .loader {
 	position: relative;
 	display: block;
