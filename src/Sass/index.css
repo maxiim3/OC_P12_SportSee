@@ -98,6 +98,13 @@ h3 {
   flex-direction: column;
   gap: clamp(8px, 1.3vh, 20px);
 }
+.sidebar__nav ul svg {
+  transition: all 350ms ease-in-out;
+}
+.sidebar__nav ul svg:hover {
+  border-radius: 30px;
+  scale: 108%;
+}
 .sidebar__aside-txt {
   font-size: clamp(8px, 0.83vw, 12px);
   width: max-content;
@@ -157,22 +164,22 @@ h3 {
   background-color: #fbfbfb;
 }
 .container__main .radialBarChart__legend--title {
+  font-size: 15px;
   position: absolute;
   top: 30px;
   left: 24px;
-  font-size: 15px;
 }
 .container__main .radialBarChart__legend--label {
   font-size: 16px;
   font-weight: 600;
+  line-height: 145%;
   position: absolute;
   top: 150px;
   left: 80px;
-  color: #b2b1b1;
-  letter-spacing: 0.4px;
-  line-height: 145%;
   width: 10ch;
   text-align: center;
+  letter-spacing: 0.4px;
+  color: #b2b1b1;
 }
 .container__main .barChart {
   width: 100% !important;
@@ -287,8 +294,14 @@ h3 {
   align-self: stretch;
   width: clamp(48px, 4.44vw, 64px);
   height: clamp(48px, 4.44vw, 64px);
+  transition: all 350ms ease-in-out;
   grid-area: svg;
   justify-self: stretch;
+}
+.container__main__aside__item:hover svg {
+  border-radius: 30px;
+  scale: 115%;
+  filter: grayscale(1);
 }
 .container__main__aside__item .value {
   font-size: clamp(14px, 1.39vw, 20px);

@@ -5,6 +5,7 @@ import {NavRedirect} from "./NavRedirect"
 // todo add documentation
 export function Header() {
 	return (
+		//todo add underline animation on hover link
 		<header className={"header"}>
 			<span className={"header__logo"}>
 				<MainIcon /> <h1>SportSee</h1>

@@ -37,6 +37,7 @@ export const useStore = async (): Promise<IUser> => {
 	const performanceData = await fetchData(USER_PERFORMANCE_URL)
 	const performance = new UserPerformanceModel(performanceData)
 
+	console.log('Store called 📞')
 	return {
 		info: userInfo,
 		activities: activities,
