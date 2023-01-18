@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<link
-			rel="icon"
-			type="image/svg+xml"
-			href="/vite.svg" />
+		<!-- Preload the stylesheet to display the loader		-->
 		<link
 			rel="stylesheet"
-			href="src/Sass/loader.css" />
+			href="src/styles/components/_loader.css"
+			as="style" />
+		<script
+			type="module"
+			src="src/scripts/loadCss.js"></script>
+
+		<meta charset="UTF-8" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<title>Vite + React + TS</title>
+
+		<!--suppress HtmlUnknownTarget -->
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/public/logo.svg" />
+
+		<!-- The script -->
+		<script
+			type="module"
+			src="/src/main.tsx"
+			defer></script>
+
+		<!-- Title		-->
+		<title>SportSee</title>
 	</head>
 	<body>
+		<!-- The loader -->
 		<div
 			data-is-visible="true"
 			id="loader-container">
 			<span class="loader"></span>
 		</div>
+
+		<!-- The app -->
 		<div id="root"></div>
-		<script
-			type="module"
-			src="/src/main.tsx"></script>
 	</body>
 </html>

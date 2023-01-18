@@ -1,0 +1,534 @@
+@use "other/normalize.css";
+
+//region RESET
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a:visited {
+	color: initial;
+}
+
+// endregion     RESET
+//region      VARIABLES
+$minVW: 1440px;
+$minVH: 1024px;
+$mainFont: Roboto, sans-serif;
+$iconSize: 48px;
+
+//region Font-props
+
+$h1: 16px; // main title h1
+$h2: 32px; // graph title
+$h3: 11px; // graph title
+$regular-text: 12px; // regular txt
+$stat-score-number: 18px; // overview main stat number
+$stat-score-label: 10px; // overview main stat label txt
+$navLink: 16px; // nav
+$stat-food-number: 15px; // aside stat number
+$stat-food-label: 10px; // small label stat txt
+
+$txt-alt: 8px; // aside txt & graph txt precision
+
+$txt-detail: 6px; // graph detail
+$txt-detail-smaller: 6px; // graph detail
+//endregion
+
+//region Colors
+$primary: rgb(2, 2, 3);
+$primary-alt: rgb(40, 45, 48);
+$secondary: rgb(255 255 255);
+$accent-red: rgb(255, 0, 0);
+$accent-red-darker: rgb(230, 0, 0); // for graph bars
+$accent-blue: rgb(74, 184, 255);
+$accent-blue: rgb(253, 204, 12);
+$accent-blue: rgb(253, 81, 129);
+//endregion
+
+$headerH: 65px;
+$sideBarW: 82px;
+$margin-block-main: 45px;
+$margin-inline-main: 62px;
+
+@mixin LeftBorder {
+	padding-inline: 18px;
+}
+
+//endregion      VARIABLES
+//region Global
+body {
+	font-family: $mainFont;
+	font-size: $regular-text;
+	font-weight: 400;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: $h1;
+	font-weight: 600;
+	color: $accent-red;
+}
+
+h2 {
+	font-size: $h2;
+
+	span {
+		color: $accent-red;
+	}
+}
+
+h3 {
+	font-size: $h3;
+}
+
+//endregion
+
+//region Header-Component
+.header {
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	@include LeftBorder;
+	width: 100vw;
+	height: $headerH;
+	color: $secondary;
+	background: $primary;
+	padding-block: 14px 9px;
+	gap: 100px;
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		flex-flow: row nowrap;
+		gap: 12px;
+
+		svg {
+			width: 45px;
+			height: 45px;
+		}
+	}
+
+	nav {
+		width: 100%;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		width: 90%;
+
+		//gap: 10vw;
+
+		li {
+			overflow: hidden;
+			height: 24px;
+		}
+
+		a {
+			font-size: $navLink;
+			font-weight: 600;
+			position: relative;
+			width: fit-content;
+			text-decoration: none;
+			color: $secondary;
+
+			&:after {
+				// underline link non visible
+				position: absolute;
+				top: 20px;
+				left: 0;
+				visibility: hidden;
+				width: 100%;
+				height: 2px;
+				content: "";
+				transition: opacity 0.3s 0.1s ease-in-out, transform 0.3s ease-in-out,
+					visibility 0.3s ease-in-out;
+				transform: translateX(-120%);
+				opacity: 0;
+				border-radius: 2px;
+				background: $secondary;
+			}
+
+			&:hover {
+				// underline appears on hover
+				&:after {
+					visibility: visible;
+					transition: all 0.3s ease-in-out;
+					transform: translateX(0);
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+//endregion
+
+//region Main
+.main {
+	display: flex;
+	flex-flow: nowrap;
+	flex-direction: row;
+	width: 100%;
+	height: calc(100vh - $headerH);
+}
+
+//region SideBar
+.sidebar {
+	@include LeftBorder;
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-flow: column nowrap;
+	width: $sideBarW;
+	height: calc(100vh - $headerH);
+	padding-top: clamp(48px, 17.6vh, 256px);
+	color: $secondary;
+	background: $primary;
+	gap: clamp(24px, 17.2vh, 248px);
+
+	&__nav {
+		ul {
+			display: flex;
+			flex-direction: column;
+			margin-inline: auto;
+			gap: 12px;
+
+			svg {
+				transition: all 250ms ease-in 100ms;
+
+				&:hover {
+					transition: all 350ms ease-out;
+					border-radius: 100%;
+					scale: 108%;
+					filter: grayscale(1);
+				}
+			}
+		}
+	}
+
+	&__aside-txt {
+		font-size: $txt-alt;
+		width: max-content;
+		rotate: -90deg;
+	}
+}
+
+//endregion
+
+//region Container
+.container {
+	overflow: hidden;
+	width: 100%;
+	margin: $margin-block-main $margin-inline-main;
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: clamp(52px, 5.35vw, 77px);
+
+		gap: clamp(12px, 2.85vw, 42px);
+
+		p {
+			font-size: $regular-text;
+		}
+	}
+
+	&__main {
+		display: flex;
+		$boxW: 184px;
+		$boxH: 184px;
+		width: 800px;
+		gap: 32px;
+
+		// All graphs container
+		&__graphs {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			width: 600px;
+			gap: 32px 20px;
+
+			&__graph {
+				border-radius: 5px;
+
+				&--bars {
+					flex-basis: 100%;
+					width: 100%;
+					height: 224px;
+				}
+
+				&--line,
+				&--radar,
+				&--radial {
+					align-self: end;
+					flex-basis: $boxW;
+					width: $boxW;
+					height: $boxH;
+				}
+			}
+		}
+
+		//region Graphs
+		//region barChart
+		.barChart {
+			width: 100% !important;
+			height: 100% !important;
+			background-color: #fbfbfb;
+
+			&__tooltip {
+				font-size: $txt-alt;
+				font-weight: bold;
+				display: grid;
+				padding: 15px 15px;
+				text-align: center;
+				color: white;
+				border: none;
+				border-radius: 0;
+				background: $accent-red-darker;
+				gap: 20px;
+			}
+
+			&__legend {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				transform: translateY(-20px);
+
+				p {
+					font-size: $stat-score-label;
+					font-weight: 500;
+				}
+
+				ul {
+					display: flex;
+					float: right;
+					margin: 15px;
+					gap: 32px;
+
+					li {
+						font-size: $stat-food-label;
+						position: relative;
+						color: rgb(116 121 140);
+
+						&::before {
+							position: absolute;
+							$diameter: 5px;
+							top: 3.5px;
+							left: -12px;
+							width: $diameter;
+							height: $diameter;
+							content: "";
+							border-radius: 100%;
+							background: $accent-red;
+						}
+
+						&:first-of-type {
+							&::before {
+								background: $primary-alt;
+							}
+						}
+					}
+				}
+			}
+
+			&__bar {
+				&--kg {
+					fill: $primary;
+				}
+
+				&--cal {
+					fill: $accent-red;
+				}
+			}
+		}
+
+		//endregion
+
+		//region lineChart
+		.lineChart {
+			width: 100% !important;
+			height: 100% !important;
+			border-radius: 5px;
+			background-color: $accent-red;
+
+			&__tooltip {
+				font-size: $txt-alt;
+				font-weight: bold;
+				display: grid;
+				padding: 15px 15px;
+				text-align: center;
+				color: black;
+				border: none;
+				border-radius: 0;
+				background: white;
+				gap: 20px;
+				place-content: center;
+			}
+
+			&__legend {
+				line-height: 18px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 34px 29px;
+				transform: translate(-5px, -25px);
+				color: rgb(255 255 255 /0.6);
+
+				p {
+					font-size: $stat-score-label;
+					font-weight: 500;
+				}
+			}
+		}
+
+		//endregion
+
+		//region radarChart
+		.radarChart {
+			width: 100% !important;
+			height: 100% !important;
+			border-radius: 5px;
+			background-color: $primary-alt;
+		}
+
+		//endregion
+
+		//region radialBar
+		.radialBarChart {
+			position: relative;
+			width: 100% !important;
+			height: 100% !important;
+			background-color: #fbfbfb;
+
+			.recharts-text {
+				tspan {
+					// select the Score % number
+				}
+			}
+
+			&__legend {
+				&--title {
+					font-size: 12px;
+					position: absolute;
+					top: 0;
+					left: 5px;
+
+					&:after {
+						// white background circle
+						position: absolute;
+						z-index: 0;
+						top: 20px;
+						left: 12px;
+						width: 110px;
+						height: 110px;
+						content: "";
+						border-radius: 100%;
+						//background-color: rgba(255, 255, 255, 0.9);
+					}
+				}
+
+				&--label {
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 125%;
+					position: absolute;
+					top: 80px;
+					left: 41px;
+					width: 10ch;
+					text-align: center;
+					letter-spacing: 0.4px;
+					color: #b2b1b1;
+				}
+			}
+		}
+
+		//endregion
+
+		//endregion
+
+		//region Aside
+		&__aside {
+			display: grid;
+			align-items: stretch;
+			height: 100%;
+			grid-row-gap: clamp(28px, 2.78vw, 40px);
+
+			&__item {
+				display: grid;
+				align-items: center;
+				padding: clamp(22px, 2.22vw, 32px);
+				border-radius: 5px;
+				background-color: rgb(251, 251, 251);
+				justify-items: self-start;
+				grid-column: $iconSize 1fr;
+				grid-template-areas:
+					"svg value"
+					"svg label";
+				grid-column-gap: clamp(18px, 1.6vw, 24px);
+
+				svg {
+					align-self: stretch;
+					width: $iconSize;
+					height: $iconSize;
+					transition: all 350ms ease-in-out;
+					grid-area: svg;
+					justify-self: stretch;
+				}
+
+				&:hover {
+					svg {
+						border-radius: 30px;
+						scale: 115%;
+						filter: grayscale(1);
+					}
+				}
+
+				.value {
+					font-size: $stat-food-number;
+					grid-area: value;
+				}
+
+				.label {
+					font-size: $stat-food-label;
+					color: rgb(116, 121, 140);
+					grid-area: label;
+				}
+			}
+		}
+
+		//endregion
+	}
+}
+
+//endregion
+
+.svg {
+	&__food {
+		&__fat {
+			#background {
+				fill-opacity: 0.1;
+				fill: #fd5181;
+			}
+
+			path {
+				fill: #fd5181;
+				clip-rule: evenodd;
+				fill-rule: evenodd;
+			}
+		}
+	}
+}
+
+#mask0_66308_128 {
+	mask-type: alpha;
+}
+
+//endregion
