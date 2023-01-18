@@ -8,11 +8,13 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
+	}
+
 
 a:visited {
 	color: initial;
-}
+	}
+
 
 // endregion     RESET
 //region      VARIABLES
@@ -57,7 +59,8 @@ $margin-inline-main: 62px;
 
 @mixin LeftBorder {
 	padding-inline: 18px;
-}
+	}
+
 
 //endregion      VARIABLES
 //region Global
@@ -66,25 +69,29 @@ body {
 	font-size: $regular-text;
 	font-weight: 400;
 	overflow-x: hidden;
-}
+	}
+
 
 h1 {
 	font-size: $h1;
 	font-weight: 600;
 	color: $accent-red;
-}
+	}
+
 
 h2 {
 	font-size: $h2;
 
 	span {
 		color: $accent-red;
+		}
 	}
-}
+
 
 h3 {
 	font-size: $h3;
-}
+	}
+
 
 //endregion
 
@@ -110,12 +117,12 @@ h3 {
 		svg {
 			width: 45px;
 			height: 45px;
+			}
 		}
-	}
 
 	nav {
 		width: 100%;
-	}
+		}
 
 	&__nav {
 		display: flex;
@@ -129,7 +136,7 @@ h3 {
 		li {
 			overflow: hidden;
 			height: 24px;
-		}
+			}
 
 		a {
 			font-size: $navLink;
@@ -149,25 +156,31 @@ h3 {
 				height: 2px;
 				content: "";
 				transition: opacity 0.3s 0.1s ease-in-out, transform 0.3s ease-in-out,
-					visibility 0.3s ease-in-out;
+				visibility 0.3s ease-in-out;
 				transform: translateX(-120%);
 				opacity: 0;
 				border-radius: 2px;
 				background: $secondary;
-			}
+				}
 
-			&:hover {
+			&:hover,
+			&:focus {
 				// underline appears on hover
+				color: #e1e1a7;
+				outline: none;
+
 				&:after {
 					visibility: visible;
 					transition: all 0.3s ease-in-out;
 					transform: translateX(0);
 					opacity: 1;
+					background: #e1e1a7;
+					}
 				}
 			}
 		}
 	}
-}
+
 
 //endregion
 
@@ -178,7 +191,8 @@ h3 {
 	flex-direction: row;
 	width: 100%;
 	height: calc(100vh - $headerH);
-}
+	}
+
 
 //region SideBar
 .sidebar {
@@ -209,17 +223,18 @@ h3 {
 					border-radius: 100%;
 					scale: 108%;
 					filter: grayscale(1);
+					}
 				}
 			}
 		}
-	}
 
 	&__aside-txt {
 		font-size: $txt-alt;
 		width: max-content;
 		rotate: -90deg;
+		}
 	}
-}
+
 
 //endregion
 
@@ -238,8 +253,8 @@ h3 {
 
 		p {
 			font-size: $regular-text;
+			}
 		}
-	}
 
 	&__main {
 		display: flex;
@@ -263,7 +278,7 @@ h3 {
 					flex-basis: 100%;
 					width: 100%;
 					height: 224px;
-				}
+					}
 
 				&--line,
 				&--radar,
@@ -272,9 +287,9 @@ h3 {
 					flex-basis: $boxW;
 					width: $boxW;
 					height: $boxH;
+					}
 				}
 			}
-		}
 
 		//region Graphs
 		//region barChart
@@ -294,7 +309,7 @@ h3 {
 				border-radius: 0;
 				background: $accent-red-darker;
 				gap: 20px;
-			}
+				}
 
 			&__legend {
 				display: flex;
@@ -305,7 +320,7 @@ h3 {
 				p {
 					font-size: $stat-score-label;
 					font-weight: 500;
-				}
+					}
 
 				ul {
 					display: flex;
@@ -328,27 +343,27 @@ h3 {
 							content: "";
 							border-radius: 100%;
 							background: $accent-red;
-						}
+							}
 
 						&:first-of-type {
 							&::before {
 								background: $primary-alt;
+								}
 							}
 						}
 					}
 				}
-			}
 
 			&__bar {
 				&--kg {
 					fill: $primary;
-				}
+					}
 
 				&--cal {
 					fill: $accent-red;
+					}
 				}
 			}
-		}
 
 		//endregion
 
@@ -371,7 +386,7 @@ h3 {
 				background: white;
 				gap: 20px;
 				place-content: center;
-			}
+				}
 
 			&__legend {
 				line-height: 18px;
@@ -385,9 +400,9 @@ h3 {
 				p {
 					font-size: $stat-score-label;
 					font-weight: 500;
+					}
 				}
 			}
-		}
 
 		//endregion
 
@@ -397,7 +412,7 @@ h3 {
 			height: 100% !important;
 			border-radius: 5px;
 			background-color: $primary-alt;
-		}
+			}
 
 		//endregion
 
@@ -411,8 +426,8 @@ h3 {
 			.recharts-text {
 				tspan {
 					// select the Score % number
+					}
 				}
-			}
 
 			&__legend {
 				&--title {
@@ -432,8 +447,8 @@ h3 {
 						content: "";
 						border-radius: 100%;
 						//background-color: rgba(255, 255, 255, 0.9);
+						}
 					}
-				}
 
 				&--label {
 					font-size: 12px;
@@ -446,9 +461,9 @@ h3 {
 					text-align: center;
 					letter-spacing: 0.4px;
 					color: #b2b1b1;
+					}
 				}
 			}
-		}
 
 		//endregion
 
@@ -481,32 +496,33 @@ h3 {
 					transition: all 350ms ease-in-out;
 					grid-area: svg;
 					justify-self: stretch;
-				}
+					}
 
 				&:hover {
 					svg {
 						border-radius: 30px;
 						scale: 115%;
 						filter: grayscale(1);
+						}
 					}
-				}
 
 				.value {
 					font-size: $stat-food-number;
 					grid-area: value;
-				}
+					}
 
 				.label {
 					font-size: $stat-food-label;
 					color: rgb(116, 121, 140);
 					grid-area: label;
+					}
 				}
 			}
-		}
 
 		//endregion
+		}
 	}
-}
+
 
 //endregion
 
@@ -516,19 +532,21 @@ h3 {
 			#background {
 				fill-opacity: 0.1;
 				fill: #fd5181;
-			}
+				}
 
 			path {
 				fill: #fd5181;
 				clip-rule: evenodd;
 				fill-rule: evenodd;
+				}
 			}
 		}
 	}
-}
+
 
 #mask0_66308_128 {
 	mask-type: alpha;
-}
+	}
+
 
 //endregion

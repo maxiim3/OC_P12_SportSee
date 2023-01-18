@@ -396,11 +396,16 @@ h3 {
   border-radius: 2px;
   background: rgb(255, 255, 255);
 }
-.header__nav a:hover:after {
+.header__nav a:hover, .header__nav a:focus {
+  color: #e1e1a7;
+  outline: none;
+}
+.header__nav a:hover:after, .header__nav a:focus:after {
   visibility: visible;
   transition: all 0.3s ease-in-out;
   transform: translateX(0);
   opacity: 1;
+  background: #e1e1a7;
 }
 
 .main {
